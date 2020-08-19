@@ -12,16 +12,16 @@ import Register from '../screens/Register/index';
 const AppStack = createStackNavigator();
 
 export default function Routes() {
-    return (
-        <NavigationContainer>
-            <AppStack.Navigator screenOptions={{ headerShown: false }}>
-                <AppStack.Screen name="BookDetails" component={ BookDetails } />
-                <AppStack.Screen name="Login" component={ Login } />
-                <AppStack.Screen name="MainScreen" component={ MainScreen } />
-                <AppStack.Screen name="NewPassword" component={ NewPassword } />
-                <AppStack.Screen name="Profile" component={ Profile } />
-                <AppStack.Screen name="Register" component={ Register } />
-            </AppStack.Navigator>
-        </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      <AppStack.Navigator screenOptions={{ headerShown: false }}>
+        <AppStack.Screen name="Login" component={ Login } />
+        <AppStack.Screen name="BookDetails" component={ BookDetails } />
+        <AppStack.Screen name="MainScreen" component={ MainScreen } />
+        <AppStack.Screen name="NewPassword" component={ NewPassword } />
+        <AppStack.Screen name="Profile" component={ Profile } />
+        <AppStack.Screen name="Register" component={ Register } />
+      </AppStack.Navigator>
+    </NavigationContainer>
+  );
 }
