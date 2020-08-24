@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -8,8 +9,10 @@ import NewPassword from '../screens/NewPassword';
 const AuthStack = createStackNavigator();
 
 const AuthRoutes = () => (
-  <AuthStack.Navigator>
+  <AuthStack.Navigator headerMode={"none"}>
     <AuthStack.Screen name="Login" component={Login}/>
+    <AuthStack.Screen name="Register" component={Register}/>
+    <AuthStack.Screen name="NewPassword" component={NewPassword}/>
   </AuthStack.Navigator>
 );
 

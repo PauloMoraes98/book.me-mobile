@@ -3,6 +3,7 @@
   "displayName": "book.me",
   "expo": {
     "name": "book.me",
+    "slug": "book.me",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"

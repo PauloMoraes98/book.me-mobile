@@ -1,14 +1,19 @@
 import React, { useState, useRef } from 'react';
 import { Feather } from '@expo/vector-icons';
-import { AsyncStorage, KeyboardAvoidingView, Keyboard, View, TextInput, TouchableWithoutFeedback, Text, Image, Linking, TouchableOpacity } from 'react-native';
+import { KeyboardAvoidingView, Keyboard, View, TextInput, TouchableWithoutFeedback, Text, Image, Linking, TouchableOpacity } from 'react-native';
+import { useAuth } from '../../contexts/auth';
 
-import api from '../../services/api';
 
 import logoImg from '../../assets/logo/bigLogo.png';
 
 import styles from './styles';
 
 export default function Login() {
+  const { signed, user, login } = useAuth();
+
+  console.log(signed);
+  console.log(user);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,23 +21,7 @@ export default function Login() {
 
 
   async function handleLogin()   {
-    try {
-      const response = await api.post('/login', {
-        email,
-        password
-      });
-
-      await AsyncStorage.setItem('email', response.data.email);
-      await AsyncStorage.setItem('name', response.data.name);
-      await AsyncStorage.setItem('token', response.data.token);
-
-      console.log(response.data.email);
-      console.log(response.data.name);
-      console.log(response.data.token);
-    } catch (e) {
-      alert('Servidor indisponível, tente novamente!');
-      console.log(e);
-    }
+    await login(email, password);
   }
   
   return (
