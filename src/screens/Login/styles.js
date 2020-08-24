@@ -19,11 +19,15 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    borderColor: '#FFFFFF',
+    borderBottomWidth: 1
   },
   formPassword: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderColor: '#FFFFFF',
+    borderBottomWidth: 1
   },
   textTitle: {
     fontSize: 16,
@@ -45,16 +49,12 @@ export default StyleSheet.create({
   textInputUser: {
     height: 40, 
     width: 340,
-    borderColor: '#FFFFFF',
     color: '#FFFFFF',
-    borderBottomWidth: 1
   },
   textInputPassword: {
     height: 40, 
     width: 340,
-    borderColor: '#FFFFFF',
     color: '#FFFFFF',
-    borderBottomWidth: 1
   },
   action: {
     backgroundColor: '#FFFFFF',
