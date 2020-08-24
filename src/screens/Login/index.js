@@ -11,14 +11,10 @@ import styles from './styles';
 export default function Login() {
   const { signed, user, login } = useAuth();
 
-  console.log(signed);
-  console.log(user);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const passwordInput = useRef();
-
 
   async function handleLogin()   {
     await login(email, password);

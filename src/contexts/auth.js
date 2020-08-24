@@ -56,6 +56,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     } catch (e) {
       alert('Não foi possível Realiar o login. Verifique seu usuário e senha e tente novamente!');
+      setLoading(false);
       console.log(e);
     }
   }
