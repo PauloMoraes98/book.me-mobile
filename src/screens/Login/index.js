@@ -4,7 +4,7 @@ import { KeyboardAvoidingView, Keyboard, View, TextInput, TouchableWithoutFeedba
 import { useAuth } from '../../contexts/auth';
 
 
-import logoImg from '../../assets/logo/bigLogo.png';
+import Logo from '../../assets/logo/bookme-white.svg';
 
 import styles from './styles';
 
@@ -28,7 +28,7 @@ export default function Login() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
           <View style={styles.header}>
-            <Image source={logoImg} />    
+            <Logo />
           </View>
 
           <View style={styles.body}>
