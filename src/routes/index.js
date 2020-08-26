@@ -3,7 +3,7 @@ import {View, ActivityIndicator } from 'react-native';
 
 import { useAuth } from '../contexts/auth';
 
-import AppRoutes from './app.routes';
+import AppTabRoutes from './app.tab.routes';
 import AuthRoutes from './auth.routes';
 
 export default function Routes() {
@@ -17,5 +17,5 @@ export default function Routes() {
     )
   }
 
-  return signed ? <AppRoutes /> : <AuthRoutes />;
+  return signed ? <AppTabRoutes /> : <AuthRoutes />;
 }

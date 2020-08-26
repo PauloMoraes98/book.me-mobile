@@ -3,7 +3,6 @@ import { Feather } from '@expo/vector-icons';
 import { KeyboardAvoidingView, Keyboard, View, TextInput, TouchableWithoutFeedback, Text, Image, Linking, TouchableOpacity } from 'react-native';
 import { useAuth } from '../../contexts/auth';
 
-
 import Logo from '../../assets/logo/bookme-white.svg';
 
 import styles from './styles';
