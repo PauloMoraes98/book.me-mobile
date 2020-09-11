@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { KeyboardAvoidingView, Keyboard, View, TextInput, TouchableWithoutFeedback, Text, Image, Linking, TouchableOpacity } from 'react-native';
 import { useAuth } from '../../contexts/auth';
+import { useNavigation } from '@react-navigation/native';
+
 
 import Logo from '../../assets/logo/bookme-white.svg';
 
@@ -12,11 +14,16 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
   const passwordInput = useRef();
 
   async function handleLogin()   {
     await login(email, password);
+  }
+
+  function handleNewUser() {
+    navigation.navigate('Register');
   }
   
   return (
@@ -74,12 +81,14 @@ export default function Login() {
               </View>
             </TouchableOpacity>
 
+            <TouchableOpacity style={styles.buttonEnter}>
             <View style={styles.register}> 
               <Feather style={styles.iconRegister} name="log-in" size={24} color="#FFFFFF" />
-              <Text style={styles.textRegister} onPress={() => {}}>
+              <Text style={styles.textRegister} onPress={handleNewUser}>
                 Não tenho cadastro
               </Text>
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </TouchableWithoutFeedback>

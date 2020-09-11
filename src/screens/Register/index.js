@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, TextInput, Text, KeyboardAvoidingView, TouchableOpacity, Linking } from 'react-native';
 import * as Location from 'expo-location';
 import { useAuth } from '../../contexts/auth';
+import { useNavigation } from '@react-navigation/native';
 
 import api from '../../services/api/index';
 
@@ -19,7 +20,12 @@ export default function Register() {
   const [userPos, setUserPos] = useState(null);
   const [setErrorMsg] = useState(null);
   const { signed, user, login } = useAuth();
+  const navigation = useNavigation();
 
+  function handleBack() {
+    navigation.goBack();
+  }
+ 
   useEffect(() => {
     async function handleLoaction() {
       const { status } = await Location.requestPermissionsAsync();
@@ -154,7 +160,7 @@ export default function Register() {
 
         <View style={styles.formButton}>
           <View style={styles.formButtonBack}>
-            <TouchableOpacity style={styles.button} onPress={() => Linking('#')}>
+            <TouchableOpacity style={styles.button} onPress={handleBack}>
               <View style={styles.actionBack}> 
                 <Text style={styles.actionTextBack}>Voltar</Text>
               </View>
