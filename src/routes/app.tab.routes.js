@@ -4,6 +4,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { Feather } from '@expo/vector-icons';
 
 import HomeRoutes from '../routes/home.stack.routes';
+import MapRoutes from '../routes/map.stack.routes';
+
 // import Profile from '../screens/Profile';
 import MyProfile from '../screens/MyProfile';
 import FindBook from '../screens/FindBook';
@@ -53,7 +55,7 @@ const AppTabRoutes = () => (
     />
     <AppTab.Screen 
       name="Map" 
-      component={Map}
+      component={MapRoutes}
       options={{
         tabBarLabel: 'Map',
         tabBarIcon: ({ color }) => (

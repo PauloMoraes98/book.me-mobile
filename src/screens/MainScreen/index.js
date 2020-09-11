@@ -20,12 +20,12 @@ export default function MainScreen() {
     setRating(newrating)
   }
 
-  function navigateToProfile() {
-    navigation.navigate('Profile');
+  function navigateToProfile(id) {
+    navigation.navigate('Profile', { id: id });
   }
 
-  function navigateToBookDetails() {
-    navigation.navigate('BookDetails');
+  function navigateToBookDetails(id) {
+    navigation.navigate('BookDetails', { id: id });
   }
   
   async function loadBooks() {
@@ -76,7 +76,7 @@ export default function MainScreen() {
             <View style={styles.container}>
               <View style={styles.userInfo}>
                 <View style={styles.userImage}></View>
-                <TouchableWithoutFeedback onPress={navigateToProfile}>
+                <TouchableWithoutFeedback onPress={() => navigateToProfile(book.books.id)}>
                   <Text style={styles.userName}>{book.books.name}</Text>
                 </TouchableWithoutFeedback>
               </View>
@@ -84,7 +84,7 @@ export default function MainScreen() {
               <View style={styles.bookInfo}>
                 <View style={styles.bookImage}></View>
                 <View style={styles.bookTextInfos}>
-                  <TouchableWithoutFeedback onPress={navigateToBookDetails}>
+                  <TouchableWithoutFeedback onPress={() => navigateToBookDetails(book.id)}>
                     <Text style={styles.bookText}>{book.name}</Text>
                   </TouchableWithoutFeedback>
                   <Text style={styles.bookText}>Valor</Text>
