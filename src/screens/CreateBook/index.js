@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, TextInput, Text, KeyboardAvoidingView, TouchableOpacity, Linking, Picker, SafeAreaView } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
+import { useNavigation } from '@react-navigation/native';
 
 import api from '../../services/api/index';
 
@@ -16,6 +17,7 @@ export default function Register() {
   const [intention, setIntention] = useState(1);
   const [value, setValue] = useState();
   const [show, setShow] = useState(false)
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (intention === 3){
@@ -35,6 +37,15 @@ export default function Register() {
       console.log(err)
       alert('Erro ao cadastrar livro, tente novamente.');
     }
+
+    navigation.navigate('MainScreen');
+
+    setName('');
+    setAuthor('');
+    setRating(0);
+    setDescription('');
+    setIntention(1);
+    setValue('');
   }
 
   return (
@@ -85,7 +96,7 @@ export default function Register() {
               autoCapitalize={"none"}
               returnKeyType={"next"}         
               multiline
-              numberOfLines={4}  
+              numberOfLines={3}  
             />
           </View>
 
@@ -132,23 +143,13 @@ export default function Register() {
             />
           </View>
 
-          <View style={styles.formButton}>
-            <View style={styles.formButtonBack}>
-              <TouchableOpacity style={styles.button} onPress={() => Linking('#')}>
-                <View style={styles.actionBack}> 
-                  <Text style={styles.actionTextBack}>Voltar</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.formButtonRegister}>
-              <TouchableOpacity style={styles.button} onPress={handleNewRegister}>
-                <View style={styles.actionRegister}> 
-                  <Text style={styles.actionTextRegister}>Registrar</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
+          <View style={styles.formButtonRegister}>
+            <TouchableOpacity style={styles.button} onPress={handleNewRegister}>
+              <View style={styles.actionRegister}> 
+                <Text style={styles.actionTextRegister}>Registrar</Text>
+              </View>
+            </TouchableOpacity>
+          </View>          
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
