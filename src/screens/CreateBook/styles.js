@@ -9,7 +9,7 @@ export default StyleSheet.create({
   logo: {
     alignItems: 'center',
     marginTop: 10,
-    marginBottom: 40,
+    marginBottom: 30,
   },
   containerView: {
     paddingHorizontal: 24,
@@ -19,11 +19,11 @@ export default StyleSheet.create({
   photograph: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   avatar: {
-    width: 300,
-    height: 180,
+    width: 250,
+    height: 150,
     borderRadius: 50,
     backgroundColor: '#D3D3D3',
   },
@@ -50,50 +50,23 @@ export default StyleSheet.create({
     marginBottom: 15
   },
   formInputAvaliation:{
-    marginTop: 10,
+    marginTop: 5,
     marginBottom: 15,
     alignItems: 'center'
   },
-  formButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  formButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 20
-    
-  },
-  formButtonBack: {
-    width: 130
-  },
   formButtonRegister: {
-    width: 130
-  },
-  actionBack: {
-    backgroundColor: '#C0B3B3',
-    borderRadius: 100,
-    height: 50,
-    width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
-    elevation: 3
+    marginTop: 10,
+   
   },
   actionRegister: {
     backgroundColor: '#09A8FA',
     borderRadius: 100,
     height: 50,
-    width: '100%',
+    width: 250,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 3
-  },
-  actionTextBack: {
-    color: '#FFFFFF',
-    fontSize: 15,
-    fontWeight: 'bold',
   },
   actionTextRegister: {
     color: '#FFFFFF',
