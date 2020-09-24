@@ -95,6 +95,7 @@ export default function MainScreen() {
                     size={20}
                     showRating={false}
                     selectedColor="#09A8FA"
+                    isDisabled={true}
                   />
                 </View>
               </View>
