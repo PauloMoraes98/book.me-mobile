@@ -127,7 +127,10 @@ export default function Profile() {
             <View style={styles.separation}></View>
 
             {books.filter(idUser => ( idUser.id_user === selectedUser.id )).map(book => (
-              <View style={styles.containerBook}>
+              <View 
+                style={styles.containerBook}
+                key={book.id}
+              >
                 <View style={styles.bookInfo}>
                     <View style={styles.bookImage}></View>
                     <View style={styles.bookTextInfos}>

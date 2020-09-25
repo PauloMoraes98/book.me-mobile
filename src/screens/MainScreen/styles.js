@@ -53,6 +53,9 @@ export default StyleSheet.create({
   bookTextInfos: {
     marginLeft: 10,
   },
+  bookText: {
+    marginBottom: 3
+  },
   bookValue: {
     color: '#acb0ae'
   }

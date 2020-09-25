@@ -87,8 +87,12 @@ export default function MainScreen() {
                   <TouchableWithoutFeedback onPress={() => navigateToBookDetails(book.id)}>
                     <Text style={styles.bookText}>{book.name}</Text>
                   </TouchableWithoutFeedback>
-                  <Text style={styles.bookText}>Valor</Text>
-                  <Text style={styles.bookValue}>R${book.value}</Text>
+                  <Text style={styles.bookText}>
+                    {
+                      book.intention == 3 ? 'Valor' : book.intention == 2 ? 'Troca' : 'Empréstimo'
+                    }
+                  </Text>
+                  {book.intention == 3 ? <Text style={styles.bookValue}>R${book.value}</Text> : null }
                   <AirbnbRating
                     count={5}
                     defaultRating={parseInt(book.rating)}
