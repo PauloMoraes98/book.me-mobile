@@ -13,12 +13,14 @@ export const AuthProvider = ({ children }) => {
     async function loadStorageData() {
       setLoading(true);
 
+      const storagedId = await AsyncStorage.getItem('@BookmeAuth:id');
       const storagedEmail = await AsyncStorage.getItem('@BookmeAuth:email');
       const storagedName = await AsyncStorage.getItem('@BookmeAuth:name');
       const storagedToken = await AsyncStorage.getItem('@BookmeAuth:token');
 
       if(storagedEmail && storagedName && storagedToken) {
         setUser({
+          id: storagedId,
           email: storagedEmail,
           name: storagedName
         });
@@ -42,11 +44,13 @@ export const AuthProvider = ({ children }) => {
       });
 
       setUser({
+        id: response.data.id,
         name: response.data.name,
         email: response.data.email
       });
       
       
+      await AsyncStorage.setItem('@BookmeAuth:id', response.data.id.toString());
       await AsyncStorage.setItem('@BookmeAuth:email', response.data.email);
       await AsyncStorage.setItem('@BookmeAuth:name', response.data.name);
       await AsyncStorage.setItem('@BookmeAuth:token', response.data.token);
