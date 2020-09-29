@@ -96,7 +96,8 @@ export default function Register() {
               autoCapitalize={"none"}
               returnKeyType={"next"}         
               multiline
-              numberOfLines={3}  
+              numberOfLines={5}  
+              maxLength={220}
             />
           </View>
 

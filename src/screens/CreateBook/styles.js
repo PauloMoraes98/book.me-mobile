@@ -55,9 +55,7 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   formButtonRegister: {
-    alignItems: 'center',
-    marginTop: 10,
-   
+    alignItems: 'center',   
   },
   actionRegister: {
     backgroundColor: '#09A8FA',
