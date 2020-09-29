@@ -36,6 +36,15 @@ export default StyleSheet.create({
     borderRadius: 50,
     backgroundColor: '#D3D3D3',
   },
+  containerEdit: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 5
+  },
+  textEdit: {
+    fontSize: 15,    
+    color: '#acb0ae'
+  },
   textNameBook: {
     fontSize: 23,
     marginBottom: 15,
@@ -63,17 +72,17 @@ export default StyleSheet.create({
     marginRight: 15,
     textAlign: 'justify',
     lineHeight: 23,
-    color: '#A19F9F'
+    color: '#acb0ae'
   },
   formInputAvaliation:{
     marginTop: 5,
-    marginBottom: 15,
     marginRight: 15,
     alignItems: 'flex-end'
   },
-  textNameBook: {
+  textBookIntention: {
     fontSize: 18,
     marginLeft: 15,
+    marginBottom: 5,
     fontWeight: 'bold'
   },
   bookValue: {
@@ -86,13 +95,13 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 15,
     marginBottom: 10,
     marginLeft: 30,
     marginRight: 30,
   },
   formButtons: {
-    width: 130
+    width: 130,
   },
   action: {
     backgroundColor: '#09A8FA',

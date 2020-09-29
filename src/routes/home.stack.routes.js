@@ -5,6 +5,7 @@ import BookDetails from '../screens/BookDetails';
 import MainScreen from '../screens/MainScreen';
 import Profile from '../screens/Profile';
 import CreateBook from '../screens/CreateBook';
+import EditBook from '../screens/EditBook';
 
 const HomeStack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const HomeRoutes = () => (
     <HomeStack.Screen name="CreateBook" component={CreateBook} />
     <HomeStack.Screen name="BookDetails" component={BookDetails}/>
     <HomeStack.Screen name="Profile" component={Profile}/>
+    <HomeStack.Screen name="EditBook" component={EditBook}/>
   </HomeStack.Navigator>
 );
 
