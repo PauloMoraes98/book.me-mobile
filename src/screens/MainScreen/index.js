@@ -80,29 +80,31 @@ export default function MainScreen() {
                   <Text style={styles.userName}>{book.books.name}</Text>
                 </TouchableWithoutFeedback>
               </View>
-              <View style={styles.separation}></View>
-              <View style={styles.bookInfo}>
-                <View style={styles.bookImage}></View>
-                <View style={styles.bookTextInfos}>
-                  <TouchableWithoutFeedback onPress={() => navigateToBookDetails(book.id)}>
-                    <Text style={styles.bookText}>{book.name}</Text>
-                  </TouchableWithoutFeedback>
-                  <Text style={styles.bookText}>
-                    {
-                      book.intention == 3 ? 'Valor' : book.intention == 2 ? 'Troca' : 'Empréstimo'
-                    }
-                  </Text>
-                  {book.intention == 3 ? <Text style={styles.bookValue}>R${book.value}</Text> : null }
-                  <AirbnbRating
-                    count={5}
-                    defaultRating={parseInt(book.rating)}
-                    size={20}
-                    showRating={false}
-                    selectedColor="#09A8FA"
-                    isDisabled={true}
-                  />
+              <TouchableWithoutFeedback onPress={() => navigateToBookDetails(book.id)}>
+                <View>
+                  <View style={styles.separation}></View>
+                  <View style={styles.bookInfo}>
+                    <View style={styles.bookImage}></View>
+                    <View style={styles.bookTextInfos}>
+                        <Text style={styles.bookText}>{book.name}</Text>
+                      <Text style={styles.bookText}>
+                        {
+                          book.intention == 3 ? 'Valor' : book.intention == 2 ? 'Troca' : 'Empréstimo'
+                        }
+                      </Text>
+                      {book.intention == 3 ? <Text style={styles.bookValue}>R${book.value}</Text> : null }
+                      <AirbnbRating
+                        count={5}
+                        defaultRating={parseInt(book.rating)}
+                        size={20}
+                        showRating={false}
+                        selectedColor="#09A8FA"
+                        isDisabled={true}
+                      />
+                    </View>
+                  </View>
                 </View>
-              </View>
+              </TouchableWithoutFeedback>
             </View>
           )}
         />

@@ -55,13 +55,27 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   formButtonRegister: {
-    alignItems: 'center',   
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 30,
+    marginBottom: 10,
   },
   actionRegister: {
     backgroundColor: '#09A8FA',
     borderRadius: 100,
     height: 50,
-    width: 250,
+    width: 130,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 3
+  },
+  actionRegisterCancel: {
+    backgroundColor: '#C0B3B3',
+    borderRadius: 100,
+    height: 50,
+    width: 130,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 3

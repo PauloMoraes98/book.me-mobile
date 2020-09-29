@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, TextInput, Text, KeyboardAvoidingView, TouchableOpacity, Linking, Picker, SafeAreaView } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import api from '../../services/api/index';
 
@@ -9,15 +9,19 @@ import styles from './styles';
 
 import Logo from '../../assets/logo/book.me.svg';
 
-export default function Register() {
+export default function EditBook() {
   const [name, setName] = useState();
   const [author, setAuthor] = useState();
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState();
   const [intention, setIntention] = useState(1);
   const [value, setValue] = useState();
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
+  const [book, setBook] = useState({ books: [] });
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const routeParams = route.params;
 
   useEffect(() => {
     if (intention === 3){
@@ -25,17 +29,30 @@ export default function Register() {
     } else {
       setShow(false)
     }
-  }, [intention])
-  
-  async function handleNewRegister() {
-    const data = { name, author, rating, description, intention, value };
 
+    async function loadBook() {
+      setBook(routeParams.book);
+    }
+
+    loadBook();
+
+    setName(book.name);
+    setAuthor(book.author);
+    setRating(book.rating);
+    setDescription(book.description);
+    setIntention(book.intention);
+    if(book.value !== undefined)
+      setValue(book.value.toString());
+  }, [intention]);
+  
+  async function handleEdit() {
+    const data = { name, author, rating, description, intention, value };
     try {
-      const newBook = await api.post('/book', data);
+      const editedBook = await api.put(`/book/${routeParams.id}`, data);
 
     }catch(err) {
       console.log(err)
-      alert('Erro ao cadastrar livro, tente novamente.');
+      alert('Erro ao editar livro, tente novamente.');
     }
 
     navigation.navigate('MainScreen');
@@ -136,7 +153,7 @@ export default function Register() {
             <Text style={styles.textTitleAvaliation}>Avalie o Livro</Text>
             <AirbnbRating
               count={5}
-              defaultRating={3}
+              defaultRating={rating}
               onFinishRating={(itemValue) => setRating(itemValue)}
               size={30}
               showRating={false}
@@ -145,12 +162,19 @@ export default function Register() {
           </View>
 
           <View style={styles.formButtonRegister}>
-            <TouchableOpacity style={styles.button} onPress={handleNewRegister}>
-              <View style={styles.actionRegister}> 
-                <Text style={styles.actionTextRegister}>Registrar</Text>
+            <TouchableOpacity style={styles.button} onPress={navigation.goBack}>
+              <View style={styles.actionRegisterCancel}> 
+                <Text style={styles.actionTextRegister}>Voltar</Text>
               </View>
             </TouchableOpacity>
-          </View>          
+
+            <TouchableOpacity style={styles.button} onPress={handleEdit}>
+              <View style={styles.actionRegister}> 
+                <Text style={styles.actionTextRegister}>Concluir</Text>
+              </View>
+            </TouchableOpacity>
+          </View> 
+                   
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
