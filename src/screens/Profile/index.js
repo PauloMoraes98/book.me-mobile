@@ -16,7 +16,7 @@ export default function Profile() {
   const {logout, user } = useAuth();
   const navigation = useNavigation();
   const route = useRoute();
-  const [selectedUser, setSelectedUser] = useState([]);
+  const [selectedUser, setSelectedUser] = useState({});
   const [books, setBooks] = useState([]);
   
   const routeParams = route.params;
@@ -26,18 +26,11 @@ export default function Profile() {
       const response = await api.get(`/user/${routeParams.id}`);
       setSelectedUser(response.data);
     }
-
+    
     loadUser();
-  }, []);
-  
-  useEffect(() => {
-    async function loadBook() {
-      const response = await api.get('/book');
-      setBooks(response.data);
-    }
 
-    loadBook();
-  }, []);
+    setBooks(selectedUser.books);
+  }, [selectedUser]);
 
   const message = `Olá ${selectedUser.name}, estou interessado no livro... Poderiamos conversar a respeito?`;
 
@@ -126,7 +119,7 @@ export default function Profile() {
 
             <View style={styles.separation}></View>
 
-            {books.filter(idUser => ( idUser.id_user === selectedUser.id )).map(book => (
+            {books && books.map(book => (
               <View 
                 style={styles.containerBook}
                 key={book.id}
@@ -137,8 +130,12 @@ export default function Profile() {
                       <TouchableWithoutFeedback onPress={() => navigateToBookDetails(book.id)}>
                         <Text style={styles.bookText}>{book.name}</Text>
                       </TouchableWithoutFeedback>
-                      <Text style={styles.bookText}>Valor</Text>
-                      <Text style={styles.bookValue}>R${book.value}</Text>
+                      <Text style={styles.bookText}>
+                        {
+                          book.intention == 3 ? 'Valor' : book.intention == 2 ? 'Troca' : 'Empréstimo'
+                        }
+                      </Text>
+                      {book.intention == 3 ? <Text style={styles.bookValue}>R${book.value}</Text> : null }
                       <AirbnbRating
                         count={5}
                         defaultRating={parseInt(book.rating)}
