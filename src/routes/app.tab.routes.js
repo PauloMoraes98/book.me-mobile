@@ -7,7 +7,7 @@ import HomeRoutes from '../routes/home.stack.routes';
 import MapRoutes from '../routes/map.stack.routes';
 
 // import Profile from '../screens/Profile';
-import MyProfile from '../screens/MyProfile';
+import MyProfile from '../routes/myprofile.stack.routes';
 import FindBook from '../screens/FindBook';
 import CreateBook from '../screens/CreateBook';
 import Map from '../screens/Map';

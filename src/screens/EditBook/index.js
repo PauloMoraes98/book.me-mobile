@@ -55,7 +55,8 @@ export default function EditBook() {
       alert('Erro ao editar livro, tente novamente.');
     }
 
-    navigation.navigate('MainScreen');
+    // navigation.navigate('MainScreen');
+    navigation.goBack();
 
     setName('');
     setAuthor('');

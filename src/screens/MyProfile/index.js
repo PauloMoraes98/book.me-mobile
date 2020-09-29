@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, FlatList, TouchableWithoutFeedback, ScrollView, Image, Linking, Button } from 'react-native';
+import { Alert, View, Text, TouchableOpacity, FlatList, TouchableWithoutFeedback, ScrollView, Image, Linking, Button } from 'react-native';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { AirbnbRating } from 'react-native-ratings';
 import { useAuth } from '../../contexts/auth';
@@ -31,6 +31,37 @@ export default function MyProfile() {
 
     setBooks(selectedUser.books);
   }, [selectedUser]);
+
+  function navigateToBookDetails(id) {
+    navigation.navigate('BookDetails', { id: id });
+  }
+
+  function navigateToEditBook(id, book) {
+    navigation.navigate('EditBook', { id: id, book: book });
+  }
+
+  async function handleDelete(id, name) {
+    Alert.alert(
+      "Excluir",
+      `Deseja Excluir o livro ${name}`,
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => deleteBook(id) }
+      ],
+      { cancelable: false }
+    );
+  }
+
+  async function deleteBook(id) {
+    await api.delete(`/book/${id}`);
+
+    Alert.alert("Livro Deletado com sucesso!");
+
+    setSelectedUser(selectedUser);
+  }
   
   return (
     <View style={styles.container}>
@@ -125,12 +156,12 @@ export default function MyProfile() {
                     />
                   </View>
                   <View style={styles.bookIcon}>
-                    <TouchableOpacity onPress={handleLogout} style={styles.iconEdit}>
-                      <Feather name="edit" color="gray" size={25} />
+                    <TouchableOpacity onPress={() => navigateToEditBook(book.id, book)} style={styles.iconEdit}>
+                      <Feather name="edit" color="#F5CD6C" size={25} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={handleLogout} style={styles.iconDelete}>
-                      <Feather name="trash-2" color="gray" size={25} />
+                    <TouchableOpacity onPress={() => handleDelete(book.id, book.name)} style={styles.iconDelete}>
+                      <Feather name="trash-2" color="#E8492A" size={25} />
                     </TouchableOpacity>
                   </View>
                 </View>

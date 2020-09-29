@@ -42,8 +42,9 @@ export default StyleSheet.create({
     marginBottom: 5
   },
   textEdit: {
-    fontSize: 15,    
-    color: '#acb0ae'
+    fontSize: 15,
+    marginBottom: 5,
+    color: "gray",
   },
   textNameBook: {
     fontSize: 23,

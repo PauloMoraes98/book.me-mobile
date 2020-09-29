@@ -47,9 +47,9 @@ export default function BookDetails() {
     Linking.openURL(`whatsapp://send?phone=${book.books.phone}&text=${message}`);
   }
 
-  function navigateToEditBook(id, book) {
-    navigation.navigate('EditBook', { id: id, book: book });
-  }
+  // function navigateToEditBook(id, book) {
+  //   navigation.navigate('EditBook', { id: id, book: book });
+  // }
 
   return (
     <View style={styles.container}>
@@ -70,15 +70,15 @@ export default function BookDetails() {
             <View style={styles.photograph}>
               <View source={{ uri: "https://jhowendoors.com/wp-content/uploads/2019/03/man-avatar-placeholder.png" }} style={styles.avatar}/> 
             </View>
-            {user.id == book.books.id ? 
+            {/* {user.id == book.books.id ? 
               <View>
                 <TouchableOpacity style={styles.containerEdit} onPress={ () => navigateToEditBook(book.id, book) }>
                   <Text style={styles.textEdit}>Editar Livro</Text>
-                  <Feather name="edit" color="#acb0ae" size={15} />
+                  <Feather name="edit" color="gray" size={15} />
                 </TouchableOpacity>
               </View>
             : 
-             null }
+             null } */}
             <View style={styles.containerNameBook}>
               <Text style={styles.textTitle}>{book.name}</Text>
             </View>
