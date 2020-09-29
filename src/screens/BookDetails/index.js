@@ -31,7 +31,7 @@ export default function BookDetails() {
     loadBook();  
 
     if(book)
-      setMessage(`Olá ${book.books.name}, estou interessado no livro ${book.name} Poderiamos conversar a respeito?`);
+      setMessage(`Olá estou interessado no livro ${book.name} Poderiamos conversar a respeito?`);
   }, []);
 
 
