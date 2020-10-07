@@ -20,7 +20,7 @@ export default function MyProfile() {
   async function handleLogout() {
     logout();
   }
-
+  
   useEffect(() => {
     async function loadUser() {
       const response = await api.get(`/user/${user.id}`);
@@ -31,6 +31,10 @@ export default function MyProfile() {
 
     setBooks(selectedUser.books);
   }, [selectedUser]);
+
+  function navigateToEditUser(id, selectedUser) {
+    navigation.navigate('EditUser', { id: id, selectedUser: selectedUser });
+  }
 
   function navigateToBookDetails(id) {
     navigation.navigate('BookDetails', { id: id });
@@ -93,7 +97,7 @@ export default function MyProfile() {
               <Text style={styles.textNameUser}>{selectedUser.name}</Text>
             </View>
 
-            <TouchableOpacity style={styles.containerEditProfile}>
+            <TouchableOpacity onPress={() => navigateToEditUser(selectedUser.id, selectedUser)} style={styles.containerEditProfile}>
               <Text style={styles.textEditProfile}>Editar Perfil</Text>
               <Feather name="edit" color="gray" size={15} />
             </TouchableOpacity>
