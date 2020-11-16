@@ -1,9 +1,9 @@
 {
-  "name": "book.me",
-  "displayName": "book.me",
+  "name": "bookme",
+  "displayName": "bookme",
   "expo": {
-    "name": "book.me",
-    "slug": "book.me",
+    "name": "bookme",
+    "slug": "bookme",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
@@ -23,6 +23,10 @@
         "wasm",
         "svg"
       ]
+    },
+    "android": {
+      "package": "com.book.me",
+      "versionCode": 1
     }
   }
 }
